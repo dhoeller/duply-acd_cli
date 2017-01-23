@@ -1,0 +1,16 @@
+acd-mount:
+  build: .
+  volumes:
+   - ${ACD_CLI_CONF_FOLDER}:/acd/
+   - ${DUPLY_ROOT_FOLDER}:/root
+   - ${BACKUP_VOLUME}:/backup
+  environment:
+    ACD_CLI_CACHE_PATH: /acd/
+    KEY_TYPE: RSA
+    KEY_LENGTH: 4096
+    SUBKEY_TYPE: RSA
+    SUBKEY_LENGTH: 4096
+    NAME_REAL: Duply NAS Backup
+    NAME_EMAIL: ${MAIL}
+    PASSPHRASE: ${PASSPHRASE} 
+  privileged: true
